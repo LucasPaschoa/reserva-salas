@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reserva de Salas Intermodal - Azul Cargo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f9fc;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0078d4;
+    }
+
+    .date-filter {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .date-button {
+      background-color: #e6f0fb;
+      border: 1px solid #0078d4;
+      color: #0078d4;
+      padding: 8px 16px;
+      margin: 4px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .date-button.active,
+    .date-button:hover {
+      background-color: #0078d4;
+      color: white;
+    }
+
+    .agenda-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .agenda-box {
+      background: white;
+      border: 1px solid #dcdcdc;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      display: none;
+      flex-direction: column;
+    }
+
+    .agenda-title {
+      background-color: #0078d4;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .agenda-frame {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    .reserva-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .reserva-button {
+      background-color: #0078d4;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .reserva-button:hover {
+      background-color: #005a9e;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Disponibilidade de Salas Intermodal – 22 a 24 de Abril</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    Selecione uma data para ver a disponibilidade das salas.
+  </p>
+
+  <div class="date-filter">
+    <button class="date-button" onclick="showAgenda('22')" id="btn-22">22/04</button>
+    <button class="date-button" onclick="showAgenda('23')" id="btn-23">23/04</button>
+    <button class="date-button" onclick="showAgenda('24')" id="btn-24">24/04</button>
+  </div>
+
+  <div class="agenda-container">
+    <!-- Sala 1 -->
+    <div class="agenda-box" data-day="22" id="agenda1-22">
+      <div class="agenda-title">Sala – Blue Cargo (22/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/63a7ba3757a642088c8e2d7596bd4ed517608821019126740459/calendar.html"></iframe>
+    </div>
+    <div class="agenda-box" data-day="22" id="agenda2-22">
+      <div class="agenda-title">Sala – Cada pacote importa (22/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/d7601806266a43c7a12bf4a900c59f926181225841781737552/calendar.html"></iframe>
+    </div>
+
+    <!-- Sala 2 - Dia 23 -->
+    <div class="agenda-box" data-day="23" id="agenda1-23">
+      <div class="agenda-title">Sala – Blue Cargo (23/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/63a7ba3757a642088c8e2d7596bd4ed517608821019126740459/calendar.html"></iframe>
+    </div>
+    <div class="agenda-box" data-day="23" id="agenda2-23">
+      <div class="agenda-title">Sala – Cada pacote importa (23/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/d7601806266a43c7a12bf4a900c59f926181225841781737552/calendar.html"></iframe>
+    </div>
+
+    <!-- Sala 3 - Dia 24 -->
+    <div class="agenda-box" data-day="24" id="agenda1-24">
+      <div class="agenda-title">Sala – Blue Cargo (24/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/63a7ba3757a642088c8e2d7596bd4ed517608821019126740459/calendar.html"></iframe>
+    </div>
+    <div class="agenda-box" data-day="24" id="agenda2-24">
+      <div class="agenda-title">Sala – Cada pacote importa (24/04)</div>
+      <iframe class="agenda-frame" src="https://outlook.office365.com/owa/calendar/29b153f2f28b47378ace58df563421be@voeazul.com.br/d7601806266a43c7a12bf4a900c59f926181225841781737552/calendar.html"></iframe>
+    </div>
+  </div>
+
+  <div class="reserva-container">
+    <a href="https://forms.office.com/r/dp8Va6WZ57" target="_blank" class="reserva-button">Fazer Reserva</a>
+  </div>
+
+  <script>
+    function showAgenda(day) {
+      // Remove classes ativas dos botões
+      document.querySelectorAll('.date-button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('btn-' + day).classList.add('active');
+
+      // Esconde todas as agendas
+      document.querySelectorAll('.agenda-box').forEach(el => el.style.display = 'none');
+
+      // Mostra apenas as do dia selecionado
+      document.querySelectorAll('[data-day="' + day + '"]').forEach(el => el.style.display = 'flex');
+    }
+
+    // Mostra a data inicial (22/04)
+    showAgenda('22');
+  </script>
+
+</body>
+</html>
+
